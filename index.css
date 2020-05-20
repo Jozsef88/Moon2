@@ -1,3 +1,4 @@
+/*basic resets*/
 * {
     margin: 0;
     padding: 0;
@@ -7,6 +8,7 @@
 html, body {
     width: 100vw;
     height: 100%;
+    overflow: hidden;
 }
 
 body {
@@ -16,44 +18,57 @@ body {
     justify-content: center;
 }
 
+/*moon*/
 .moon {
     border-radius: 50%;
-    width: 500px;
-    height: 500px;
+    width: 250px;
+    height: 250px;
     background: url(./moon.jpg);
     background-repeat: repeat-x;
     background-size: cover;
     animation: moon-rotation 90s linear infinite;
-    box-shadow: inset 60px 0 40px black,
-                inset 160px 0 60px rgba(0, 0, 0, .9),
-                inset -160px 0 60px rgba(248, 248, 213, 0.2);
+    box-shadow: inset 20px 0 30px rgba(0, 0, 0, .9),
+                inset -40px 0 30px rgba(248, 248, 213, 0.2);
 }
 
 .moon:before, .moon:after {
     content: "";
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
     /*border: brown 1px solid;*/
     border-radius: 50%;
 }
 
 .moon:before {
-    box-shadow: -80px -10px 60px black;
-    width: 495px;
-    height: 495px;
-    z-index: 10;
+    box-shadow: -40px -10px 10px black,
+                -40px -10px 15px black,
+                -40px -10px 20px black,
+                inset 30px 0 20px black;
+    width: 260px;
+    height: 260px;
+    z-index: -10;
 }
 
 .moon:after {
-    width: 510px;
-    height: 510px;
-    background: radial-gradient(circle at center, 
-        rgba(0, 0, 0, 0) 0, rgba(0, 0, 0, 0) 249px,
-        rgba(255, 255, 255, .5) 250px, rgba(255, 255, 255, .1) 255px);
-    z-index: 9;
+    width: 260px;
+    height: 260px;
+    background: radial-gradient(circle at top right, 
+        rgba(0, 0, 0, 0) 0, rgba(0, 0, 0, 0) 0,
+        rgba(255, 255, 255, .5) 220px, rgba(255, 255, 255, .1) 300px);
+    z-index: -11;
 }
+
+.moon {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    z-index: -20;
+}
+
+.moon:before, .moon:after {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+}
+
 
 @keyframes moon-rotation {
     from {background-position: -500px center;}
@@ -75,4 +90,109 @@ body {
         height: 245px;
         box-shadow: -60px 0 50px black;
     }    
+}
+
+/*earth*/
+.earth {
+    border-radius: 50%;
+    width: 750px;
+    height: 750px;
+    background: url(./earth.jpg);
+    background-repeat: repeat-x;
+    background-size: cover;
+    animation: earth-rotation 90s linear infinite;
+    transform: rotate(-23.5deg);
+}
+
+.earth::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 800px;
+    height: 800px;
+    background: radial-gradient(circle at center, rgba(255, 255, 255, 0) 150px,
+                                                  rgba(64, 105, 218, 0.3) 375px,
+                                                  rgba(255, 255, 255, 0) 400px);
+    z-index: 29;
+}
+
+.earth-cloud {
+    width: 760px;
+    height: 760px;
+    border-radius: 50%;
+    position: absolute;
+    background: url(./earthCloud.png);
+    background-repeat: repeat-x;
+    background-size: cover;
+    animation: earth-cloud-rotation 90s linear infinite;
+    transform: rotate(-23.5deg);
+    z-index: 31;
+}
+
+.earth-cloud-shadow {
+    width: 760px;
+    height: 760px;
+    border-radius: 50%;
+    position: absolute;
+    background: url(./earthCloud.png);
+    background-repeat: repeat-x;
+    background-size: cover;
+    filter: brightness(0) opacity(.5);
+    animation: earth-cloud-shadow-rotation 90s linear infinite;
+    transform: rotate(-23.5deg);
+    z-index: 30;
+}
+
+.earth-cloud::before {
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 800px;
+    height: 800px;
+    background: radial-gradient(circle at center, rgba(255, 255, 255, 0) 150px,
+                                                  rgba(88, 106, 156, .1) 375px,
+                                                  rgba(255, 255, 255, 0) 400px);
+    z-index: 51;
+}
+
+.earth-cloud::after {
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 780px;
+    height: 780px;
+    box-shadow: inset 50px 50px 50px rgb(0, 0, 0),
+                inset 30px 30px 30px rgb(0, 0, 0),
+                inset -20px 30px 50px rgba(133, 171, 229, .1),
+                inset -10px 15px 30px rgba(133, 171, 229, .1),
+                inset 15px -20px 20px rgb(0, 0, 0),
+                inset 20px -10px 20px rgb(0, 0, 0),
+                inset -5px -5px 40px 40px rgba(113, 130, 151, 0.3),
+                inset -10px 15px 25px 25px rgba(86, 164, 216, 0.2),
+                5px 5px 5px rgba(134, 146, 165, 0.2),
+                5px 10px 5px rgba(132, 145, 155, 0.2);
+    z-index: 50;
+}
+
+@keyframes earth-rotation {
+    from {background-position: right center;}
+    to {background-position: 750px center;}
+}
+
+@keyframes earth-cloud-rotation {
+    from {background-position: right center;}
+    to {background-position: 760px center;}
+}
+
+@keyframes earth-cloud-shadow-rotation {
+    from {background-position: -765px center;}
+    to {background-position: 755px center;}
 }
