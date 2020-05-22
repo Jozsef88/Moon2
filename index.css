@@ -21,14 +21,13 @@ body {
 /*moon*/
 .moon {
     border-radius: 50%;
-    width: 250px;
-    height: 250px;
     background: url(./moon.jpg);
     background-repeat: repeat-x;
     background-size: cover;
-    animation: moon-rotation 90s linear infinite;
+    animation: moon-rotation 30s linear infinite;
     box-shadow: inset 20px 0 30px rgba(0, 0, 0, .9),
                 inset -40px 0 30px rgba(248, 248, 213, 0.2);
+    position: absolute;
 }
 
 .moon:before, .moon:after {
@@ -38,58 +37,161 @@ body {
 }
 
 .moon:before {
-    box-shadow: -40px -10px 10px black,
-                -40px -10px 15px black,
-                -40px -10px 20px black,
-                inset 30px 0 20px black;
-    width: 260px;
-    height: 260px;
-    z-index: -10;
-}
-
-.moon:after {
-    width: 260px;
-    height: 260px;
-    background: radial-gradient(circle at top right, 
-        rgba(0, 0, 0, 0) 0, rgba(0, 0, 0, 0) 0,
-        rgba(255, 255, 255, .5) 220px, rgba(255, 255, 255, .1) 300px);
-    z-index: -11;
-}
-
-.moon {
-    position: absolute;
-    top: 5px;
-    right: 5px;
-    z-index: -20;
+    box-shadow: -40px -10px 10px rgba(0, 0, 0, .5),
+                -40px -10px 15px rgba(0, 0, 0, .5),
+                -40px -10px 20px rgba(0, 0, 0, .5),
+                inset 30px 0 20px rgba(0, 0, 0, 1);
+    animation: moon-shadow 30s linear infinite;
 }
 
 .moon:before, .moon:after {
     position: absolute;
-    top: -5px;
-    right: -5px;
 }
-
 
 @keyframes moon-rotation {
-    from {background-position: -500px center;}
-    to {background-position: 496px center;}
-}
-
-@media screen and (max-width: 500px) {
-    body {
-        background: radial-gradient(circle at center, rgb(255, 255, 255) 115px, black 130px);
+    0% {
+       /* background-position: -500px center;*/
+        top: 2%; right: 2%;
+        width: 375px;
+        height: 375px;
+        z-index: -100;
     }
-
-    .moon {
+    5% {
+        top: 10%; right: 10%;
         width: 250px;
         height: 250px;
     }
+    25% {
+        top: 60%; right: 60%;
+        width: 250px;
+        height: 250px;
+        z-index: -100;
+    }
+    30% {
+        top: 70%; right: 70%;
+        width: 375px;
+        height: 375px;
+        z-index: 100;
+    }
+    35% {
+        top: 60%; right: 60%;
+        width: 500px;
+        height: 500px;
+    }
+    45% {
+        top: 10%; right: 10%;
+        width: 500px;
+        height: 500px;
+        z-index: 100;
+    }
+    50% {
+        top: 2%; right: 2%;
+        width: 375px;
+        height: 375px;
+        z-index: 100;
+    }
+    55% {
+        top: 10%; right: 10%;
+        width: 250px;
+        height: 250px;
+        z-index: -100;
+    }
+    60% {
+        width: 250px;
+        height: 250px;
+    }
+    75% {
+        top: 60%; right: 60%;
+        width: 250px;
+        height: 250px;
+        z-index: -100;
+    }
+    80% {
+        top: 70%; right: 70%;
+        width: 375px;
+        height: 375px;
+        z-index: 100;
+    }
+    85% {top: 60%; right: 60%;
+        width: 500px;
+        height: 500px;
+    }
+    95% {
+        top: 10%; right: 10%;
+        width: 500px;
+        height: 500px;
+    }
+    100% {
+       /* background-position: 496px center;*/
+        top: 2%; right: 2%;
+        width: 375px;
+        height: 375px;
+        z-index: 100;
+    }
+}
 
-    .moon:before {
-        width: 245px;
-        height: 245px;
-        box-shadow: -60px 0 50px black;
-    }    
+@keyframes moon-shadow {
+    0% {
+        width: 375px;
+        height: 375px;
+        z-index: -99;
+    }
+    5% {
+        width: 250px;
+        height: 250px;
+        
+    }
+    25% {
+        width: 250px;
+        height: 250px;
+        
+    }
+    30% {
+        width: 375px;
+        height: 375px;
+        z-index: 1001;
+    }
+    35% {
+        width: 500px;
+        height: 500px;
+    }
+    45% {
+        width: 500px;
+        height: 500px;
+    }
+    50% {
+        width: 375px;
+        height: 375px;
+        z-index: -99;
+    }
+    55% {
+        width: 250px;
+        height: 250px;
+        
+    }
+    75% {
+        width: 250px;
+        height: 250px;
+        
+    }
+    80% {
+        width: 375px;
+        height: 375px;
+        z-index: 1001;
+    }
+    85% {
+        width: 500px;
+        height: 500px;
+    }
+    95% {
+        width: 500px;
+        height: 500px;
+    }
+    100% {
+        width: 375px;
+        height: 375px;
+        z-index: -99;
+    }
 }
 
 /*earth*/
@@ -193,6 +295,6 @@ body {
 }
 
 @keyframes earth-cloud-shadow-rotation {
-    from {background-position: -765px center;}
-    to {background-position: 755px center;}
+    0% {background-position: -765px center;}
+    100% {background-position: 755px center;}
 }
